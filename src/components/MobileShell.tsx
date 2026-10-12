@@ -128,17 +128,23 @@ export const MobileShell: React.FC<MobileShellProps> = ({
             : 'h-screen w-full sm:max-w-[430px] sm:h-[92vh] sm:max-h-[890px] sm:rounded-[48px] sm:border-[10px] sm:border-slate-800 sm:ring-1 sm:ring-slate-700/50 sm:shadow-black'
         }`}
       >
-        {/* iOS Dynamic Island & Status Bar */}
-        <div className="pt-3 pb-1 px-7 flex items-center justify-between text-xs select-none shrink-0 z-40 bg-slate-950/80 backdrop-blur-md">
+        {/* iOS Dynamic Island & Status Bar (Safe Area Top) */}
+        <div
+          className="px-6 flex items-center justify-between text-xs select-none shrink-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-900/80"
+          style={{
+            paddingTop: 'max(0.75rem, env(safe-area-inset-top, 0px))',
+            paddingBottom: '0.5rem',
+          }}
+        >
           <span className="font-semibold text-sm tracking-tight text-slate-200">
             {currentTime}
           </span>
 
           {/* Dynamic Island pill */}
-          <div className="flex items-center gap-2 px-3 py-1 bg-black rounded-full border border-slate-800/80">
+          <div className="flex items-center gap-2 px-3 py-1 bg-black rounded-full border border-slate-800/80 shadow-inner">
             {isRecording ? (
               <span className="flex items-center gap-1.5 text-[10px] text-red-400 font-mono font-bold animate-pulse">
-                <span className="w-2 h-2 rounded-full bg-red-500" />
+                <span className="w-2 h-2 rounded-full bg-red-500 shadow-sm shadow-red-500" />
                 REC
               </span>
             ) : (
@@ -155,13 +161,24 @@ export const MobileShell: React.FC<MobileShellProps> = ({
           </div>
         </div>
 
-        {/* Screen Content Body */}
-        <main className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-none relative pb-20">
+        {/* Screen Content Body with Safe Area Scroll Bottom Clearance */}
+        <main
+          className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-none relative"
+          style={{
+            paddingBottom: 'calc(5.5rem + max(0.875rem, env(safe-area-inset-bottom, 0px)))',
+          }}
+        >
           {children}
         </main>
 
-        {/* Bottom Navigation Tab Bar */}
-        <nav className="absolute bottom-0 inset-x-0 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800/90 px-2 py-2 flex items-center justify-around z-30">
+        {/* Bottom Navigation Tab Bar with Safe Area Bottom */}
+        <nav
+          className="absolute bottom-0 inset-x-0 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800/90 px-3 flex items-center justify-around z-30 shadow-2xl"
+          style={{
+            paddingTop: '0.625rem',
+            paddingBottom: 'max(0.875rem, env(safe-area-inset-bottom, 0px))',
+          }}
+        >
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             const isRecButton = item.id === 'record';
@@ -197,8 +214,13 @@ export const MobileShell: React.FC<MobileShellProps> = ({
         </nav>
 
         {/* Home Indicator bar */}
-        <div className="absolute bottom-1 inset-x-0 flex justify-center pointer-events-none z-40">
-          <div className="w-32 h-1 bg-slate-600/60 rounded-full" />
+        <div
+          className="absolute inset-x-0 flex justify-center pointer-events-none z-40"
+          style={{
+            bottom: 'max(0.25rem, calc(env(safe-area-inset-bottom, 0px) / 3))',
+          }}
+        >
+          <div className="w-32 h-1 bg-slate-600/40 rounded-full" />
         </div>
       </div>
     </div>

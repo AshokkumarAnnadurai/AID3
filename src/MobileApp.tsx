@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   Platform,
   KeyboardAvoidingView,
+  StatusBar as RNStatusBar,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { WebView } from 'react-native-webview';
@@ -162,14 +163,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#020617',
+    paddingTop: Platform.OS === 'android' ? (RNStatusBar.currentHeight || 0) : 0,
+    paddingBottom: Platform.OS === 'android' ? 10 : 0,
   },
   header: {
-    height: 44,
+    height: 48,
     backgroundColor: '#0F172A',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 12,
+    paddingHorizontal: 14,
     borderBottomWidth: 1,
     borderBottomColor: '#1E293B',
   },
