@@ -125,7 +125,7 @@ export const MobileShell: React.FC<MobileShellProps> = ({
         className={`w-full transition-all duration-300 relative bg-slate-950 flex flex-col overflow-hidden shadow-2xl ${
           isFullscreen
             ? 'h-screen max-w-none rounded-none border-none'
-            : 'max-w-[430px] h-[92vh] max-h-[890px] rounded-[48px] border-[10px] border-slate-800 ring-1 ring-slate-700/50 shadow-black'
+            : 'h-screen w-full sm:max-w-[430px] sm:h-[92vh] sm:max-h-[890px] sm:rounded-[48px] sm:border-[10px] sm:border-slate-800 sm:ring-1 sm:ring-slate-700/50 sm:shadow-black'
         }`}
       >
         {/* iOS Dynamic Island & Status Bar */}

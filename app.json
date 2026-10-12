@@ -34,40 +34,6 @@
         "FOREGROUND_SERVICE",
         "FOREGROUND_SERVICE_MICROPHONE"
       ]
-    },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "minSdkVersion": 26,
-            "targetSdkVersion": 34,
-            "compileSdkVersion": 34,
-            "enableProguardInReleaseBuilds": true
-          },
-          "ios": {
-            "deploymentTarget": "15.1"
-          }
-        }
-      ],
-      [
-        "whisper.rn",
-        {
-          "ios": { "enableMetal": true },
-          "android": { "enableNNAPI": true }
-        }
-      ],
-      [
-        "llama.rn",
-        {
-          "ios": { "enableMetal": true },
-          "android": { "enableOpenCL": true }
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
     }
   }
 }

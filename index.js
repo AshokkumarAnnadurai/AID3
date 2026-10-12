@@ -1,7 +1,18 @@
-import { registerRootComponent } from 'expo';
-import App from './src/App.tsx';
+if (typeof global !== 'undefined' && !global.ErrorUtils) {
+  let _h = () => {};
+  global.ErrorUtils = {
+    setGlobalHandler: (h) => { _h = h; },
+    getGlobalHandler: () => _h,
+    reportError: (e) => console.error(e),
+    reportFatalError: (e) => console.error(e),
+    applyWithGuard: (fn, ctx, args) => fn.apply(ctx, args),
+    applyWithGuardIfNeeded: (fn, ctx, args) => fn.apply(ctx, args),
+    inGuard: () => false,
+    guard: (fn) => fn,
+  };
+}
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
-registerRootComponent(App);
+import { registerRootComponent } from 'expo';
+import MobileApp from './src/MobileApp.tsx';
+
+registerRootComponent(MobileApp);
