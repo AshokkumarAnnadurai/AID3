@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended"
+  ],
+  "env": {
+    "es2022": true,
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "no-unused-vars": "off",
+    "no-console": "off",
+    "prefer-const": "error"
+  }
+}

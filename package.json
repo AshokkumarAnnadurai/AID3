@@ -1,0 +1,51 @@
+{
+  "name": "react-example",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "vite --port=3000 --host=0.0.0.0",
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "build:mobile": "eas build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist server.js",
+    "lint": "tsc --noEmit",
+    "test": "tsx src/tests/phase1.test.ts && tsx src/tests/phase2.test.ts && tsx src/tests/phase3.test.ts && tsx src/tests/phase4.test.ts && tsx src/tests/phase5.test.ts"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^15.1.1",
+    "@google/genai": "^2.4.0",
+    "@reduxjs/toolkit": "^2.13.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "dotenv": "^17.2.3",
+    "expo": "^57.0.27",
+    "express": "^4.21.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "react-hook-form": "^7.90.0",
+    "react-native": "^0.87.1",
+    "react-native-web": "^0.21.4",
+    "react-redux": "^9.3.0",
+    "vite": "^8.3.0",
+    "zod": "^4.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2",
+    "@types/express": "^4.17.21"
+  }
+}
